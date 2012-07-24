@@ -54,44 +54,66 @@ PRODUCT_PACKAGES += \
 
 # update utilities
 PRODUCT_PACKAGES += \
-	make_ext4fs \
-	bootmenu_busybox \
-        librs_jni \
-        libOmxCore \
-        make_ext4fs \
-      setup_fs \
-    brcm_patchram_plus \
+    setup_fs \
     SamsungServiceMode \
-    rzscontrol \
+    libcopybit \
+    gralloc.totoro \
     bdaddr_read \
+    toggleshutter \
+    patchlcs \
+    dexpreopt \
     dump_image \
     e2fsck \
-    setup_fs \
     erase_image \
-    flash_image \
-    screencap \
-    gralloc.totoro \
+    flash_image
+
+# Add LDPI assets, in addition to MDPI
+  PRODUCT_LOCALES += ldpi mdpi
+
+# Extra overlay for LDPI
+  PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
+
   
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
-	frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-	frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-	frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-	frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-       frameworks/base/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
-	frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-	frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-	frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-	frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
-# Adicionado por gustavo
+    frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+
+
+PRODUCT_PROPERTY_OVERRIDES += \
+       wifi.interface=eth0 \
+       wifi.supplicant_scan_interval=20 \
+       ro.telephony.ril_class=samsung \
+       ro.telephony.sends_barcount=1 \
+       mobiledata.interfaces=pdp0,eth0,gprs,ppp0 \
+       dalvik.vm.heapsize=64m \
+       persist.service.usb.setting=0 \
+       dev.sfbootcomplete=0 \
+       persist.sys.vold.switchexternal=1
+
+#kernel modules
+PRODUCT_COPY_FILES += \
+    device/samsung/totoro/prebuilt/fsr.ko:root/fsr.ko \
+    device/samsung/totoro/prebuilt/fsr_stl.ko:root/fsr_stl.ko \
+    device/samsung/totoro/prebuilt/rfs_fat.ko:root/rfs_fat.ko \
+    device/samsung/totoro/prebuilt/rfs_glue.ko:root/rfs_glue.ko \
+    device/samsung/totoro/prebuilt/j4fs.ko:root/j4fs.ko \
+    device/samsung/totoro/prebuilt/sec_param.ko:root/sec_param.ko \
+# Board-specific init
+PRODUCT_COPY_FILES += \
+    device/samsung/totoro/ueventd.gt-s5360.rc:root/ueventd.gt-s5360.rc \
+    device/samsung/totoro/init.gt-s5360.rc:root/init.gt-s5360.rc
+
+    
+
 #audio
 PRODUCT_COPY_FILES += \
-vendor/samsung/totoro/proprietary/system/lib/liba2dp.so:system/lib/liba2dp.so \
-vendor/samsung/totoro/proprietary/system/lib/libaudio.so:system/lib/libaudio.so \
 vendor/samsung/totoro/proprietary/system/lib/liblvvefs.so:system/lib/liblvvefs.so \
 vendor/samsung/totoro/proprietary/system/lib/lib_Samsung_Resampler.so:system/lib/lib_Samsung_Resampler.so \
 vendor/samsung/totoro/proprietary/system/lib/libsamsungSoundbooster.so:system/lib/libsamsungSoundbooster.so \
@@ -102,12 +124,13 @@ vendor/samsung/totoro/proprietary/system/lib/libsoundalive.so:system/lib/libsoun
 vendor/samsung/totoro/proprietary/system/lib/lib_R2VS_ARM_GA_Library_for_EUROPA.so:system/lib/lib_R2VS_ARM_GA_Library_for_EUROPA.so \
 vendor/samsung/totoro/proprietary/system/lib/libmedia.so:system/lib/libmedia.so \
 vendor/samsung/totoro/proprietary/system/lib/libaudioflinger.so:system/lib/libaudioflinger.so \
-vendor/samsung/totoro/proprietary/system/bin/mediaserver:system/bin/mediaserver \
-vendor/samsung/totoro/proprietary/system/lib/libsisodrm.so:system/lib/libsisodrm.so \
-vendor/samsung/totoro/proprietary/system/lib/libomadrm.so:system/lib/libomadrm.so \
-vendor/samsung/totoro/proprietary/system/lib/librs_jni.so:system/lib/librs_jni.so \
-vendor/samsung/totoro/proprietary/system/lib/libRS.so:system/lib/libRS.so \
-
+vendor/samsung/totoro/proprietary/system/lib/liba2dp.so:system/lib/liba2dp.so \
+#vendor/samsung/totoro/proprietary/system/lib/libaudio.so:system/lib/libaudio.so \
+#vendor/samsung/totoro/proprietary/system/bin/mediaserver:system/bin/mediaserver \
+#vendor/samsung/totoro/proprietary/system/lib/libsisodrm.so:system/lib/libsisodrm.so \
+#vendor/samsung/totoro/proprietary/system/lib/libomadrm.so:system/lib/libomadrm.so \
+#vendor/samsung/totoro/proprietary/system/lib/librs_jni.so:system/lib/librs_jni.so \
+#vendor/samsung/totoro/proprietary/system/lib/libRS.so:system/lib/libRS.so \
 #vendor/samsung/totoro/proprietary/system/lib/liblzo.so:system/lib/liblzo.so \
 
 # apns config file
@@ -116,6 +139,7 @@ PRODUCT_COPY_FILES += \
 
 #mediaplayer
 PRODUCT_COPY_FILES += \
+vendor/samsung/totoro/proprietary/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
 vendor/samsung/totoro/proprietary/system/lib/libBRCM_omx_core.so:system/lib/libBRCM_omx_core.so \
 vendor/samsung/totoro/proprietary/system/lib/libBRCM_omx_core_plugin.so:system/lib/libBRCM_omx_core_plugin.so \
 vendor/samsung/totoro/proprietary/system/lib/invoke_mock_media_player.so:system/lib/invoke_mock_media_player.so \
@@ -125,26 +149,25 @@ vendor/samsung/totoro/proprietary/system/lib/libomx_avcdec_sharedlibrary.so:syst
 vendor/samsung/totoro/proprietary/system/lib/libomx_m4vdec_sharedlibrary.so:system/lib/libomx_m4vdec_sharedlibrary.so \
 vendor/samsung/totoro/proprietary/system/lib/libomx_mp3dec_sharedlibrary.so:system/lib/libomx_mp3dec_sharedlibrary.so \
 vendor/samsung/totoro/proprietary/system/lib/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so \
-vendor/samsung/totoro/proprietary/system/lib/libopencore_author.so:system/lib/libopencore_author.so \
-vendor/samsung/totoro/proprietary/system/lib/libopencore_common.so:system/lib/libopencore_common.so \
-vendor/samsung/totoro/proprietary/system/lib/libopencore_mp4local.so:system/lib/libopencore_mp4local.so \
-vendor/samsung/totoro/proprietary/system/lib/libopencore_mp4localreg.so:system/lib/libopencore_mp4localreg.so \
-vendor/samsung/totoro/proprietary/system/lib/libopencore_net_support.so:system/lib/libopencore_net_support.so \
-vendor/samsung/totoro/proprietary/system/lib/libopencore_player.so:system/lib/libopencore_player.so \
-vendor/samsung/totoro/proprietary/system/lib/libopencore_rtsp.so:system/lib/libopencore_rtsp.so \
-vendor/samsung/totoro/proprietary/system/lib/libopencore_rtspreg.so:system/lib/libopencore_rtspreg.so \
-vendor/samsung/totoro/proprietary/system/lib/libOpenSLES.so:system/lib/llibOpenSLES.so \
-vendor/samsung/totoro/proprietary/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
+#vendor/samsung/totoro/proprietary/system/lib/libopencore_author.so:system/lib/libopencore_author.so \
+#vendor/samsung/totoro/proprietary/system/lib/libopencore_common.so:system/lib/libopencore_common.so \
+#vendor/samsung/totoro/proprietary/system/lib/libopencore_mp4local.so:system/lib/libopencore_mp4local.so \
+#vendor/samsung/totoro/proprietary/system/lib/libopencore_mp4localreg.so:system/lib/libopencore_mp4localreg.so \
+#vendor/samsung/totoro/proprietary/system/lib/libopencore_net_support.so:system/lib/libopencore_net_support.so \
+#vendor/samsung/totoro/proprietary/system/lib/libopencore_player.so:system/lib/libopencore_player.so \
+#vendor/samsung/totoro/proprietary/system/lib/libopencore_rtsp.so:system/lib/libopencore_rtsp.so \
+#vendor/samsung/totoro/proprietary/system/lib/libopencore_rtspreg.so:system/lib/libopencore_rtspreg.so \
+#vendor/samsung/totoro/proprietary/system/lib/libOpenSLES.so:system/lib/llibOpenSLES.so \
 
 #usb
 PRODUCT_COPY_FILES += \
-vendor/samsung/totoro/proprietary/system/bin/vold:system/bin/vold \
-vendor/samsung/totoro/proprietary/system/bin/usb_portd:system/bin/usb_portd \
-vendor/samsung/totoro/proprietary/system/etc/usb_portd.conf:system/etc/usb_portd.conf \
-vendor/samsung/totoro/proprietary/system/etc/usb_tether.sh:system/etc/usb_tether.sh \
-vendor/samsung/totoro/proprietary/system/etc/usbconfig.sh:system/etc/usbconfig.sh \
 vendor/samsung/totoro/proprietary/system/etc/vold.fstab:system/etc/vold.fstab \
-vendor/samsung/totoro/proprietary/system/etc/dbus.conf:system/etc/dbus.conf \
+#vendor/samsung/totoro/proprietary/system/bin/vold:system/bin/vold \
+#vendor/samsung/totoro/proprietary/system/bin/usb_portd:system/bin/usb_portd \
+#vendor/samsung/totoro/proprietary/system/etc/usb_portd.conf:system/etc/usb_portd.conf \
+#vendor/samsung/totoro/proprietary/system/etc/usb_tether.sh:system/etc/usb_tether.sh \
+#vendor/samsung/totoro/proprietary/system/etc/usbconfig.sh:system/etc/usbconfig.sh \
+#vendor/samsung/totoro/proprietary/system/etc/dbus.conf:system/etc/dbus.conf \
 
 #vendor/samsung/totoro/proprietary/system/etc/usbmode.txt:system/etc/usbmode.txt \
 #phone
@@ -193,22 +216,22 @@ vendor/samsung/totoro/proprietary/system/usr/keylayout/sec_keypad.kl:system/usr/
 
 #bluetooth
 PRODUCT_COPY_FILES += \
-vendor/samsung/totoro/proprietary/system/lib/libbluedroid.so:system/lib/libbluedroid.so \
-vendor/samsung/totoro/proprietary/system/lib/libbluetooth.so:system/lib/libbluetooth.so \
-vendor/samsung/totoro/proprietary/system/lib/libbluetoothd.so:system/lib/libbluetoothd.so \
-vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_calendar.jpg:system/usr/bluetooth/print/icon_calendar.jpg \
-vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_contact.jpg:system/usr/bluetooth/print/icon_contact.jpg \
-vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_email.jpg:system/usr/bluetooth/print/icon_email.jpg \
-vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_man.jpg:system/usr/bluetooth/print/icon_man.jpg \
-vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_mms.jpg:system/usr/bluetooth/print/icon_mms.jpg \
-vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_sms.jpg:system/usr/bluetooth/print/icon_sms.jpg \
-vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/logo.jpg:system/usr/bluetooth/print/logo.jpg \
-vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/title.jpg:system/usr/bluetooth/print/title.jpg \
-vendor/samsung/totoro/proprietary/system/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
-vendor/samsung/totoro/proprietary/system/etc/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
-vendor/samsung/totoro/proprietary/system/etc/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
-vendor/samsung/totoro/proprietary/system/etc/bluetooth/input.conf:system/etc/bluetooth/input.conf \
-vendor/samsung/totoro/proprietary/system/etc/bluetooth/main.conf:system/etc/bluetooth/main.conf 
+#vendor/samsung/totoro/proprietary/system/lib/libbluedroid.so:system/lib/libbluedroid.so \
+#vendor/samsung/totoro/proprietary/system/lib/libbluetooth.so:system/lib/libbluetooth.so \
+#vendor/samsung/totoro/proprietary/system/lib/libbluetoothd.so:system/lib/libbluetoothd.so \
+#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_calendar.jpg:system/usr/bluetooth/print/icon_calendar.jpg \
+#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_contact.jpg:system/usr/bluetooth/print/icon_contact.jpg \
+#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_email.jpg:system/usr/bluetooth/print/icon_email.jpg \
+#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_man.jpg:system/usr/bluetooth/print/icon_man.jpg \
+#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_mms.jpg:system/usr/bluetooth/print/icon_mms.jpg \
+#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_sms.jpg:system/usr/bluetooth/print/icon_sms.jpg \
+#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/logo.jpg:system/usr/bluetooth/print/logo.jpg \
+#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/title.jpg:system/usr/bluetooth/print/title.jpg \
+#vendor/samsung/totoro/proprietary/system/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
+#vendor/samsung/totoro/proprietary/system/etc/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
+#vendor/samsung/totoro/proprietary/system/etc/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
+#vendor/samsung/totoro/proprietary/system/etc/bluetooth/input.conf:system/etc/bluetooth/input.conf \
+#vendor/samsung/totoro/proprietary/system/etc/bluetooth/main.conf:system/etc/bluetooth/main.conf 
 
 #gps
 PRODUCT_COPY_FILES += \
@@ -222,13 +245,14 @@ vendor/samsung/totoro/proprietary/system/etc/gps.conf:system/etc/gps.conf \
 
 #Wifi
 PRODUCT_COPY_FILES += \
-vendor/samsung/totoro/proprietary/system/etc/wifi/bcm4330_aps.bin:system/etc/wifi/bcm4330_aps.bin \
-vendor/samsung/totoro/proprietary/system/etc/wifi/bcm4330_sta.bin:system/etc/wifi/bcm4330_sta.bin \
-vendor/samsung/totoro/proprietary/system/etc/wifi/RC_248_WPA.bin:system/etc/wifi/RC_248_WPA.bin \
-vendor/samsung/totoro/proprietary/system/etc/wifi/bcm4330_mfg.bin:system/etc/wifi/bcm4330_mfg.bin \
-vendor/samsung/totoro/proprietary/system/etc/wifi/nvram_mfg.txt:system/etc/wifi/nvram_mfg.txt \
-vendor/samsung/totoro/proprietary/system/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-vendor/samsung/totoro/proprietary/system/etc/wifi/nvram.txt:system/etc/wifi/nvram.txt \
+#vendor/samsung/totoro/proprietary/system/etc/wifi/bcm4330_aps.bin:system/etc/wifi/bcm4330_aps.bin \
+#vendor/samsung/totoro/proprietary/system/etc/wifi/bcm4330_sta.bin:system/etc/wifi/bcm4330_sta.bin \
+#vendor/samsung/totoro/proprietary/system/etc/wifi/RC_248_WPA.bin:system/etc/wifi/RC_248_WPA.bin \
+#vendor/samsung/totoro/proprietary/system/etc/wifi/bcm4330_mfg.bin:system/etc/wifi/bcm4330_mfg.bin \
+#vendor/samsung/totoro/proprietary/system/etc/wifi/nvram_mfg.txt:system/etc/wifi/nvram_mfg.txt \
+#vendor/samsung/totoro/proprietary/system/etc/wifi/wpa_supplicant.conf:system/etc/wifi/#wpa_supplicant.conf \
+#vendor/samsung/totoro/proprietary/system/etc/wifi/nvram.txt:system/etc/wifi/nvram.txt \
+#vendor/samsung/totoro/proprietary/system/etc/wifi/wifi.conf:system/etc/wifi/wifi.conf \
 
 
 #rild
@@ -261,60 +285,12 @@ ro.telephony.ril_class=samsung \
 ro.telephony.sends_barcount=1
 #
 
-#The OpenGL ES API level that is natively supported by this device.
-# This is a 16.16 fixed point number
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.opengles.version=131072
+
+
 
 # Verizon cdma stuff
 PRODUCT_PROPERTY_OVERRIDES += \
 
-
-
-#The OpenGL ES API level that is natively supported by this device.
-# This is a 16.16 fixed point number
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.opengles.version=131072
-
-# Verizon cdma stuff
-PRODUCT_PROPERTY_OVERRIDES += \
-
-
-
-#The OpenGL ES API level that is natively supported by this device.
-# This is a 16.16 fixed point number
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.opengles.version=131072
-
-# Verizon cdma stuff
-PRODUCT_PROPERTY_OVERRIDES += \
-
-
-
-#The OpenGL ES API level that is natively supported by this device.
-# This is a 16.16 fixed point number
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.opengles.version=131072
-
-# Verizon cdma stuff
-PRODUCT_PROPERTY_OVERRIDES += \
-
-
-
-#The OpenGL ES API level that is natively supported by this device.
-# This is a 16.16 fixed point number
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.opengles.version=131072
-
-# Verizon cdma stuff
-PRODUCT_PROPERTY_OVERRIDES += \
-
-
-
-#The OpenGL ES API level that is natively supported by this device.
-# This is a 16.16 fixed point number
-PRODUCT_PROPERTY_OVERRIDES := \
-    ro.opengles.version=131072
 
 # Verizon cdma stuff
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -343,10 +319,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # These are the hardware-specific settings that are stored in system properties.
 # Note that the only such settings should be the ones that are too low-level to
 # be reachable from resources or other mechanisms.
-PRODUCT_PROPERTY_OVERRIDES += \
-       wifi.interface=eth0 \
-       wifi.supplicant_scan_interval=45 \
-       dalvik.vm.heapsize=48m
+
 
 # enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
