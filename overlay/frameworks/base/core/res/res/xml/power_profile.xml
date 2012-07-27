@@ -45,8 +45,8 @@
 	</array>
 	<array name="cpu.speeds" >
 		<value > 800000 </value>
-		<value > 667000 </value>
-		<value > 333000 </value>
+		<value > 624000 </value>
+		<value > 320000 </value>
 	</array>
 	<item name="cpu.idle" >
 		0.1
