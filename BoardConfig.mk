@@ -20,11 +20,9 @@
 
 # Set this up here so that BoardVendorConfig.mk can override it
 #BOARD_USES_GENERIC_AUDIO := true
-TARGET_PROVIDES_LIBAUDIO := true
-BOARD_USES_ALSA_AUDIO := true
-BUILD_WITH_ALSA_UTILS := true
 
-BOARD_USES_LIBSECRIL_STUB := true
+
+
 
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/totoro/BoardConfigVendor.mk
@@ -48,10 +46,14 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 BOARD_USE_LEGACY_TRACKPAD := true
 
 # Audio
-#BOARD_PROVIDES_LIBAUDIO := true
+TARGET_PROVIDES_LIBAUDIO := true
+BOARD_USES_ALSA_AUDIO := true
+BUILD_WITH_ALSA_UTILS := true
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
+
+BOARD_USES_LIBSECRIL_STUB := true
 
 #camera
 USE_CAMERA_STUB := true
