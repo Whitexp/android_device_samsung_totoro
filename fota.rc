@@ -17,10 +17,8 @@ on init
     mkdir /cache
     mkdir /tmp
     mkdir /dbdata
-    mkdir /efs
-    mkdir /datadata
-    mkdir /emmc
     mkdir /mnt 0775 root root
+    mkdir /mnt/.lfs 0775 root root
     #mount /tmp /tmp tmpfs   
 
 on early-fs
@@ -31,31 +29,20 @@ on early-fs
     insmod rfs_glue.ko
     insmod rfs_fat.ko
     insmod sec_param.ko
+    insmod j4fs.ko
 
 on fs
     mount tmpfs tmpfs /tmp
-    mount rfs /dev/stl9 /system check=no
-    mount rfs /dev/stl9 /system rw remount
-
-# system/userdata is moved to 'on emmc' and 'on nand' sections
-	mount ext4 /dev/block/stl11 /data wait nosuid nodev noatime nodiratime noauto_da_alloc
-	mount rfs /dev/stl11 /data nosuid nodev check=no
+    mount rfs /dev/stl9 /system nosuid nodev check=no
+    mount rfs /dev/stl11 /data nosuid nodev check=no
+    mount rfs /dev/stl10 /cache nosuid nodev
+    mount j4fs /dev/stl6 /mnt/.lfs 
 
 	chown system system /data
     chmod 0771 /data  
 
-# /cache
-	mount ext4 /dev/block/stl10 /cache wait nosuid nodev noatime nodiratime noauto_da_alloc
-	mount rfs /dev/stl10 /cache nosuid nodev
 
-# /system rw first to give the filesystem a chance to save a checkpoint
-	mount ext4 /dev/block/stl9 /system rw remount wait noatime nodiratime noauto_da_alloc
-	mount rfs /dev/stl9 /system rw remount ckeck=no
-
-
-
-
-
+    
 on post-fs
 
     write /proc/sys/kernel/panic_on_oops 1
@@ -65,7 +52,6 @@ on post-fs
     write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
     write /proc/sys/kernel/sched_compat_yield 1
     write /proc/sys/kernel/sched_child_runs_first 0
-    write /proc/LinuStoreIII/fsbuild_check BUILDING
 
     chown system cache /cache
     chmod 0770 /cache
@@ -84,18 +70,12 @@ on boot
 
     class_start default
 
-    exec /sbin/sh /sbin/killrecovery.sh
-
 service ueventd /sbin/ueventd
     critical
 
-service console /system/sh
-    console
+service ua_launcher /sbin/ua_launcher
+    oneshot
 
-#service recovery /sbin/recovery
-
-service adbd /sbin/adbd recovery
-    disabled
 
 # Always start adbd on userdebug and eng builds
 # In recovery, always run adbd as root.
@@ -109,8 +89,8 @@ on property:service.adb.root=1
     restart adbd
     write /sys/class/android_usb/android0/enable 1
 
-on property:persist.service.adb.enable=1
-    start adbd
+#on property:persist.service.adb.enable=1
+#    start adbd
 
-#on property:persist.service.adb.enable=0
-#    stop adbd
+on property:persist.service.adb.enable=0
+    stop adbd

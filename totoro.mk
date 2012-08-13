@@ -26,8 +26,10 @@ $(call inherit-product, device/samsung/totoro/device_totoro.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := totoro
+PRODUCT_NAME := generic_totoro
 PRODUCT_DEVICE := totoro
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung
 PRODUCT_MODEL := GT-S5360
 
-
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=soju BUILD_ID=GRJ22 BUILD_DISPLAY_ID=GRJ90 BUILD_FINGERPRINT=google/soju/crespo:2.3.4/GRJ22/121341:user/release-keys PRIVATE_BUILD_DESC="soju-user 2.3.4 GRJ22 121341 release-keys"
