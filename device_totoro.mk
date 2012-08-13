@@ -147,7 +147,7 @@ vendor/samsung/totoro/proprietary/system/lib/libomx_sharedlibrary.so:system/lib/
 #usb
 PRODUCT_COPY_FILES += \
 vendor/samsung/totoro/proprietary/system/etc/vold.fstab:system/etc/vold.fstab \
-#vendor/samsung/totoro/proprietary/system/bin/vold:system/bin/vold \
+vendor/samsung/totoro/proprietary/system/bin/vold:system/bin/vold \
 #vendor/samsung/totoro/proprietary/system/bin/usb_portd:system/bin/usb_portd \
 #vendor/samsung/totoro/proprietary/system/etc/usb_portd.conf:system/etc/usb_portd.conf \
 #vendor/samsung/totoro/proprietary/system/etc/usb_tether.sh:system/etc/usb_tether.sh \
