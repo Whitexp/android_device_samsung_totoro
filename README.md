@@ -1,4 +1,4 @@
 Device-Galaxy-Y
 ===============
 
-Folder Device/Galaxy Y ..for cm7
+Folder Device/Galaxy Y ..for cm9
