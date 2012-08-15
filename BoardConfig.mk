@@ -19,7 +19,6 @@
 #
 
 # Set this up here so that BoardVendorConfig.mk can override it
-#BOARD_USES_GENERIC_AUDIO := true
 
 
 
@@ -43,12 +42,13 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 
 #ics stuff
 BOARD_USE_LEGACY_TOUCHSCREEN := true
-BOARD_USE_LEGACY_TRACKPAD := true
+
 
 # Audio
 TARGET_PROVIDES_LIBAUDIO := true
 BOARD_USES_ALSA_AUDIO := true
 BUILD_WITH_ALSA_UTILS := true
+
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
@@ -63,6 +63,7 @@ BOARD_USE_JPEG := true
 #BOARD_USE_CAF_LIBCAMERA_GB_REL := true
 
 #3D
+BOARD_EGL_CFG := device/samsung/totoro/prebuilt/lib/egl/egl.cfg
 TARGET_FORCE_CPU_UPLOAD := true
 USE_OPENGL_RENDERER := true
 BOARD_NO_RGBX_8888 := true

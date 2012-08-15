@@ -61,9 +61,9 @@ PRODUCT_PACKAGES += \
     libOmxCore
 
 # LDPI assets
-PRODUCT_LOCALES += mdpi
-PRODUCT_AAPT_CONFIG := mdpi hdpi
-PRODUCT_AAPT_PREF_CONFIG := mdpi
+PRODUCT_LOCALES += en
+PRODUCT_AAPT_CONFIG := normal ldpi 
+PRODUCT_AAPT_PREF_CONFIG := ldpi
   
 
 # These are the hardware-specific features
@@ -203,6 +203,7 @@ vendor/samsung/totoro/proprietary/system/usr/keylayout/sec_keypad.kl:system/usr/
 
 #bluetooth
 PRODUCT_COPY_FILES += \
+vendor/samsung/totoro/proprietary/system/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
 #vendor/samsung/totoro/proprietary/system/lib/libbluedroid.so:system/lib/libbluedroid.so \
 #vendor/samsung/totoro/proprietary/system/lib/libbluetooth.so:system/lib/libbluetooth.so \
 #vendor/samsung/totoro/proprietary/system/lib/libbluetoothd.so:system/lib/libbluetoothd.so \
@@ -214,7 +215,6 @@ PRODUCT_COPY_FILES += \
 #vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_sms.jpg:system/usr/bluetooth/print/icon_sms.jpg \
 #vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/logo.jpg:system/usr/bluetooth/print/logo.jpg \
 #vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/title.jpg:system/usr/bluetooth/print/title.jpg \
-#vendor/samsung/totoro/proprietary/system/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
 #vendor/samsung/totoro/proprietary/system/etc/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
 #vendor/samsung/totoro/proprietary/system/etc/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
 #vendor/samsung/totoro/proprietary/system/etc/bluetooth/input.conf:system/etc/bluetooth/input.conf \
@@ -318,7 +318,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # other kernel modules not in ramdisk
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/samsung/tass/kernel
+    LOCAL_KERNEL := device/samsung/totoro/kernel
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
