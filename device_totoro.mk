@@ -61,8 +61,8 @@ PRODUCT_PACKAGES += \
     libOmxCore
 
 # LDPI assets
-PRODUCT_LOCALES += en_GB
-PRODUCT_AAPT_CONFIG := normal ldpi 
+PRODUCT_LOCALES += en
+PRODUCT_AAPT_CONFIG := normal ldpi mdpi 
 PRODUCT_AAPT_PREF_CONFIG := ldpi
   
 
