@@ -61,7 +61,7 @@ PRODUCT_PACKAGES += \
     libOmxCore
 
 # LDPI assets
-PRODUCT_LOCALES += en
+PRODUCT_LOCALES += en_GB
 PRODUCT_AAPT_CONFIG := normal ldpi 
 PRODUCT_AAPT_PREF_CONFIG := ldpi
   
@@ -249,6 +249,7 @@ device/samsung/totoro/prebuilt/bin/get_macaddrs:/system/bin/get_macaddrs \
 
 #rild
 PRODUCT_COPY_FILES += \
+vendor/samsung/totoro/proprietary/system/lib/libril.so:obj/lib/libril.so \
 vendor/samsung/totoro/proprietary/system/lib/libril.so:system/lib/libril.so \
 vendor/samsung/totoro/proprietary/system/lib/libbrcm_ril.so:system/lib/libbrcm_ril.so \
 vendor/samsung/totoro/proprietary/system/lib/liburilclient.so:system/lib/liburilclient.so \
