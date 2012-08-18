@@ -63,6 +63,10 @@ BOARD_USES_HW_RENDER := true
 TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 TARGET_ELECTRONBEAM_FRAMES := 8
 
+# Touch screen compatibility for ICS ( I'm Keyur AMAL DAS told me to help you guys so it is my first patch )
+BOARD_USE_LEGACY_TOUCHSCREEN := true
+
+
 
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 
