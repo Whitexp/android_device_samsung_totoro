@@ -70,6 +70,10 @@ BOARD_NO_RGBX_8888 := true
 BOARD_USE_SCREENCAP := true
 
 
+# Touch screen compatibility for ICS ( I'm Keyur AMAL DAS told me to help you guys so it is my first patch )
+BOARD_USE_LEGACY_TOUCHSCREEN := true
+
+
 
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 
