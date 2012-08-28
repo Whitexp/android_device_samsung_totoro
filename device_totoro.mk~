@@ -61,8 +61,8 @@ PRODUCT_PACKAGES += \
     libOmxCore
 
 # LDPI assets
-PRODUCT_LOCALES += en_GB
-PRODUCT_AAPT_CONFIG := normal ldpi 
+PRODUCT_LOCALES += en
+PRODUCT_AAPT_CONFIG := normal ldpi mdpi
 PRODUCT_AAPT_PREF_CONFIG := ldpi
   
 
@@ -193,13 +193,20 @@ vendor/samsung/totoro/proprietary/system/lib/hw/lights.bcm21553.so:system/lib/hw
 PRODUCT_COPY_FILES += \
 vendor/samsung/totoro/proprietary/system/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
 vendor/samsung/totoro/proprietary/system/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
-vendor/samsung/totoro/proprietary/system/usr/keychars/sec_key.kcm.bin:system/usr/keychars/sec_key.kcm.bin \
+vendor/samsung/totoro/proprietary/system/usr/keychars/sec_key.kcm.bin:system/usr/keychars/sec_key.kcm.bin 
+
+#keylayout
+PRODUCT_COPY_FILES += \
 vendor/samsung/totoro/proprietary/system/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
 vendor/samsung/totoro/proprietary/system/usr/keylayout/bcm_headset.kl:system/usr/keylayout/bcm_headset.kl \
 vendor/samsung/totoro/proprietary/system/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
 vendor/samsung/totoro/proprietary/system/usr/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
 vendor/samsung/totoro/proprietary/system/usr/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
-vendor/samsung/totoro/proprietary/system/usr/keylayout/sec_keypad.kl:system/usr/keylayout/sec_keypad.kl \
+vendor/samsung/totoro/proprietary/system/usr/keylayout/sec_keypad.kl:system/usr/keylayout/sec_keypad.kl 
+
+## Touchscreen
+PRODUCT_COPY_FILES += \
+    device/samsung/totoro/prebuilt/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
 
 #bluetooth
 PRODUCT_COPY_FILES += \

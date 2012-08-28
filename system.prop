@@ -8,17 +8,18 @@ ro.sf.lcd_density=120
 media.stagefright.enable-player=true
 windowsmgr.max_events_per_sec=150
 video.accelerate.hw=1
-ro.telephony.call_ring.delay=0
-ro.ril.disable.power.collapse=0
+
 
 ## RIL
-rild.libpath=/system/lib/libsec-ril.so
+rild.libpath=/system/lib/libbrcm_ril.so
 rild.libargs=-d /dev/smd0
 ro.telephony.default_network=0
-ro.com.android.dataroaming=false
 ro.ril.hsxpa=1
 ro.ril.gprsclass=10
 mobiledata.interfaces=pdp0,gprs,ppp0
+DEVICE_PROVISIONED=1
+ro.telephony.call_ring.delay=0
+ro.ril.disable.power.collapse=0
 DEVICE_PROVISIONED=1
 
 ## Wi-Fi interface
