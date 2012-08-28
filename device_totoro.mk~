@@ -280,12 +280,6 @@ vendor/samsung/totoro/proprietary/system/lib/modules/brcm_switch.ko:system/lib/m
 #vendor/samsung/totoro/proprietary/system/lib/modules/dhd.ko:system/lib/modules/bcm4330.ko \
 
 
-# RIL properties
-PRODUCT_PROPERTY_OVERRIDES += \
-rild.libargs=-d/dev/smd0 \
-rild.libpath=/system/lib/libbrcm_ril.so \
-ro.telephony.ril_class=samsung \
-ro.telephony.sends_barcount=1
 
 # Performance & graphics properties
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -50,7 +50,8 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/totoro/overlay
 PRODUCT_PACKAGES += \
     setup_fs \
     SoundRecoder \
-    VoiceDialer
+    VoiceDialer  \
+    FileManager  
 
 
 # Video decoding
