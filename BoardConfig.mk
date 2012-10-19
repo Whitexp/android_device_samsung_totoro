@@ -20,11 +20,6 @@
 
 # Set this up here so that BoardVendorConfig.mk can override it
 
-#attempt to fix ril
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.telephony.ril_class=SamsungRIL \
-ro.telephony.ril.v3=icccardstatus,datacall,signals trength,facilitylock \
-mobiledata.interfaces=pdp0,eth0,gprs,ppp0
 
 #Audio
 TARGET_PROVIDES_LIBAUDIO := true
