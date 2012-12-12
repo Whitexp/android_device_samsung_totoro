@@ -44,7 +44,7 @@ $(call inherit-product, build/target/product/languages_full.mk)
 $(call inherit-product, build/target/product/full_base.mk)
 
 # Add device package overlay
-DEVICE_PACKAGE_OVERLAYS := device/samsung/totoro/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/totoro/overlay
 
 # Libs
 PRODUCT_PACKAGES += \
@@ -54,11 +54,11 @@ PRODUCT_PACKAGES += \
 
 # update utilities
 PRODUCT_PACKAGES += \
-    setup_fs \
+    broadcom \
+    libOmxCore \
+    gralloc.totoro \
     SamsungServiceMode \
     libcopybit \
-    gralloc.totoro \
-    bdaddr_read \
     toggleshutter \
     patchlcs \
     dexpreopt \
@@ -92,7 +92,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.telephony.ril_class=samsung \
        ro.telephony.sends_barcount=1 \
        mobiledata.interfaces=pdp0,eth0,gprs,ppp0 \
-       dalvik.vm.heapsize=64m \
        persist.service.usb.setting=0 \
        dev.sfbootcomplete=0 \
        persist.sys.vold.switchexternal=1
@@ -110,10 +109,37 @@ PRODUCT_COPY_FILES += \
     device/samsung/totoro/ueventd.gt-s5360.rc:root/ueventd.gt-s5360.rc \
     device/samsung/totoro/init.gt-s5360.rc:root/init.gt-s5360.rc
 
+
+#extra-apps
+PRODUCT_COPY_FILES += \
+#device/samsung/totoro/prebuilt/app/quickpic.apk::system/app/quickpic.apk \
+
+
+# Configuration files for audio
+PRODUCT_COPY_FILES += \
+	vendor/samsung/totoro/proprietary/system/etc/audio/soundbooster.txt:system/etc/audio/soundbooster.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/LVVEFS_Rx_Configuration.txt:system/etc/audio/LVVEFS_Rx_Configuration.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/LVVEFS_Tx_Configuration.txt:system/etc/audio/LVVEFS_Tx_Configuration.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/Rx_ControlParams_EARPIECE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_EARPIECE_WIDEBAND.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/Rx_ControlParams_SPEAKER_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SPEAKER_WIDEBAND.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/Rx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/Rx_ControlParams_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_WIRED_HEADSET_WIDEBAND.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/Tx_ControlParams_EARPIECE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_EARPIECE_WIDEBAND.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/Tx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt \
+	vendor/samsung/totoro/proprietary/system/etc/audio/Tx_ControlParams_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_WIRED_HEADSET_WIDEBAND.txt \
+	device/samsung/totoro/prebuilt/etc/init.d/10soundbooster:system/etc/init.d/10soundbooster
+
+
     
 
 #audio
 PRODUCT_COPY_FILES += \
+vendor/samsung/totoro/proprietary/system/etc/asound.conf:system/etc/asound.conf \
+vendor/samsung/totoro/proprietary/system/lib/libaudiopolicy.so:system/lib/libaudiopolicy.so \
+vendor/samsung/totoro/proprietary/system/lib/libaudiopolicy.so:obj/lib/libaudiopolicy.so \
+vendor/samsung/totoro/proprietary/system/lib/libaudio.so:system/lib/libaudio.so \
+vendor/samsung/totoro/proprietary/system/lib/libaudio.so:obj/lib/libaudio.so \
 vendor/samsung/totoro/proprietary/system/lib/liblvvefs.so:system/lib/liblvvefs.so \
 vendor/samsung/totoro/proprietary/system/lib/lib_Samsung_Resampler.so:system/lib/lib_Samsung_Resampler.so \
 vendor/samsung/totoro/proprietary/system/lib/libsamsungSoundbooster.so:system/lib/libsamsungSoundbooster.so \
@@ -125,7 +151,6 @@ vendor/samsung/totoro/proprietary/system/lib/lib_R2VS_ARM_GA_Library_for_EUROPA.
 vendor/samsung/totoro/proprietary/system/lib/libmedia.so:system/lib/libmedia.so \
 vendor/samsung/totoro/proprietary/system/lib/libaudioflinger.so:system/lib/libaudioflinger.so \
 vendor/samsung/totoro/proprietary/system/lib/liba2dp.so:system/lib/liba2dp.so \
-#vendor/samsung/totoro/proprietary/system/lib/libaudio.so:system/lib/libaudio.so \
 #vendor/samsung/totoro/proprietary/system/bin/mediaserver:system/bin/mediaserver \
 #vendor/samsung/totoro/proprietary/system/lib/libsisodrm.so:system/lib/libsisodrm.so \
 #vendor/samsung/totoro/proprietary/system/lib/libomadrm.so:system/lib/libomadrm.so \
@@ -243,20 +268,33 @@ vendor/samsung/totoro/proprietary/system/bin/glgps:system/bin/glgps \
 vendor/samsung/totoro/proprietary/system/bin/gps.cer:system/bin/gps.cer \
 vendor/samsung/totoro/proprietary/system/etc/gps.conf:system/etc/gps.conf \
 
+#misc
+PRODUCT_COPY_FILES += \
+device/samsung/totoro/prebuilt/bin/btld:system/bin/btld \
+device/samsung/totoro/prebuilt/bin/wlandutservice:system/bin/wlandutservice \
+device/samsung/totoro/prebuilt/bin/mfgloader:system/bin/mfgloader \
+device/samsung/totoro/prebuilt/bin/runSysCmd:system/bin/runSysCmd \
+device/samsung/totoro/prebuilt/bin/usb_portd:system/bin/usb_portd \
+device/samsung/totoro/prebuilt/bin/memsicd:system/bin/memsicd 
+
 #Wifi
 PRODUCT_COPY_FILES += \
+vendor/samsung/totoro/proprietary/system/lib/libnetutils.so:system/lib/libnetutils.so \
+device/samsung/totoro/prebuilt/etc/dhcpcd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
+device/samsung/totoro/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+device/samsung/totoro/prebuilt/bin/get_macaddrs:system/bin/get_macaddrs \
 vendor/samsung/totoro/proprietary/system/etc/wifi/bcm4330_aps.bin:system/etc/wifi/bcm4330_aps.bin \
 vendor/samsung/totoro/proprietary/system/etc/wifi/bcm4330_sta.bin:system/etc/wifi/bcm4330_sta.bin \
 vendor/samsung/totoro/proprietary/system/etc/wifi/RC_248_WPA.bin:system/etc/wifi/RC_248_WPA.bin \
 vendor/samsung/totoro/proprietary/system/etc/wifi/bcm4330_mfg.bin:system/etc/wifi/bcm4330_mfg.bin \
 vendor/samsung/totoro/proprietary/system/etc/wifi/nvram_mfg.txt:system/etc/wifi/nvram_mfg.txt \
 vendor/samsung/totoro/proprietary/system/etc/wifi/nvram.txt:system/etc/wifi/nvram.txt \
-vendor/samsung/totoro/proprietary/system/etc/wifi/wifi.conf:system/etc/wifi/wifi.conf \
-#vendor/samsung/totoro/proprietary/system/etc/wifi/wpa_supplicant.conf:system/etc/wifi/#wpa_supplicant.conf \
+vendor/samsung/totoro/proprietary/system/etc/wifi/wifi.conf:system/etc/wifi/wifi.conf 
 
 
 #rild
 PRODUCT_COPY_FILES += \
+vendor/samsung/totoro/proprietary/system/lib/libril.so:system/lib/libril.so \
 vendor/samsung/totoro/proprietary/system/bin/rild:system/bin/rild \
 vendor/samsung/totoro/proprietary/system/lib/libbrcm_ril.so:system/lib/libbrcm_ril.so \
 vendor/samsung/totoro/proprietary/system/lib/liburilclient.so:system/lib/liburilclient.so \
@@ -272,53 +310,11 @@ vendor/samsung/totoro/proprietary/system/bin/BCM4330B1_002.001.003.0485.0506.hcd
 PRODUCT_COPY_FILES += \
 vendor/samsung/totoro/proprietary/system/lib/modules/bcm_headsetsw.ko:system/lib/modules/bcm_headsetsw.ko \
 vendor/samsung/totoro/proprietary/system/lib/modules/brcm_switch.ko:system/lib/modules/brcm_switch.ko \
-vendor/samsung/totoro/proprietary/system/lib/modules/dhd.ko:system/lib/modules/bcm4330.ko \
+vendor/samsung/totoro/proprietary/system/lib/modules/dhd.ko:system/lib/modules/dhd.ko \
 vendor/samsung/totoro/proprietary/system/lib/modules/gememalloc.ko:system/lib/modules/gememalloc.ko \
 vendor/samsung/totoro/proprietary/system/lib/modules/h6270enc.ko:system/lib/modules/h6270enc.ko \
 vendor/samsung/totoro/proprietary/system/lib/modules/hx170dec.ko:system/lib/modules/hx170dec.ko 
 
-# RIL properties
-PRODUCT_PROPERTY_OVERRIDES += \
-rild.libargs=-d/dev/smd0 \
-rild.libpath=/system/lib/libbrcm_ril.so \
-ro.telephony.ril_class=samsung \
-ro.telephony.sends_barcount=1
-#
-
-
-
-
-# Verizon cdma stuff
-PRODUCT_PROPERTY_OVERRIDES += \
-
-
-# Verizon cdma stuff
-PRODUCT_PROPERTY_OVERRIDES += \
-       ro.telephony.default_network=4 \
-       ro.ril.def.agps.mode=2 \
-       ro.ril.samsung_cdma=true \
-       ro.cdma.home.operator.numeric=310004 \
-       ro.cdma.home.operator.alpha=Verizon \
-       ro.cdma.homesystem=64,65,76,77,78,79,80,81,82,83 \
-       ro.cdma.data_retry_config=default_randomization=2000,0,0,120000,180000,540000,960000 \
-       ro.config.vc_call_vol_steps=15 \
-       ro.cdma.otaspnumschema=SELC,3,00,07,80,87,88,99 \
-       ro.telephony.call_ring.multiple=false \
-       ro.telephony.call_ring.delay=3000 \
-       ro.telephony.call_ring.absent=true \
-       net.cdma.pppd.authtype=require-chap \
-       net.cdma.pppd.user=user[SPACE]VerizonWireless \
-       net.cdma.datalinkinterface=/dev/ttyCDMA0 \
-       net.cdma.ppp.interface=ppp0 \
-       net.connectivity.type=CDMA1 \
-       net.interfaces.defaultroute=cdma \
-       ro.telephony.ril_class=samsung \
-       mobiledata.interfaces=eth0,ppp0 \
-       ro.sf.hwrotation=90
-
-# These are the hardware-specific settings that are stored in system properties.
-# Note that the only such settings should be the ones that are too low-level to
-# be reachable from resources or other mechanisms.
 
 
 # enable Google-specific location features,
@@ -327,16 +323,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.com.google.locationfeatures=1 \
         ro.com.google.networklocation=1
 
-# Extended JNI checks
-# The extended JNI checks will cause the system to run more slowly, but they can spot a variety of nasty bugs 
-# before they have a chance to cause problems.
-# Default=true for development builds, set by android buildsystem.
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.kernel.android.checkjni=0 \
-    dalvik.vm.checkjni=false
-
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 # other kernel modules not in ramdisk
 ifeq ($(TARGET_PREBUILT_KERNEL),)
