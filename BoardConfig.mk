@@ -39,36 +39,32 @@ TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 
 
+USE_CAMERA_STUB := true
 
 #ics stuff
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 
 # Audio
-TARGET_PROVIDES_LIBAUDIO := true
+BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
-BUILD_WITH_ALSA_UTILS := true
 
 
 # RIL
-BOARD_PROVIDES_LIBRIL := true
-
-BOARD_USES_LIBSECRIL_STUB := true
+BOARD_USES_LEGACY_RIL := true
+BOARD_FORCE_RILD_AS_ROOT := true
+BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 
 #camera
 USE_CAMERA_STUB := true
 BOARD_V4L2_DEVICE := /dev/video2
 BOARD_CAMERA_DEVICE := /dev/video0
 BOARD_USE_JPEG := true
-#BOARD_USE_CAF_LIBCAMERA_GB_REL := true
 
 #3D
 BOARD_EGL_CFG := device/samsung/totoro/prebuilt/lib/egl/egl.cfg
-TARGET_FORCE_CPU_UPLOAD := true
-USE_OPENGL_RENDERER := true
 BOARD_NO_RGBX_8888 := true
-BOARD_USE_SCREENCAP := true
-
+ENABLE_WEBGL := true
 
 
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
@@ -96,7 +92,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 206831616
 BOARD_FLASH_BLOCK_SIZE := 4096
 TARGET_RECOVERY_INITRC := device/samsung/totoro/recovery.rc
 #TARGET_KERNEL_SOURCE := kernel/samsung/gy/common
-#TARGET_KERNEL_CONFIG := bcm21553_totoro_05_defconfig
+#TARGET_KERNEL_CONFIG := bcm21553_totoro_05_cm9_defconfig
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 
 
@@ -104,7 +101,6 @@ TARGET_RECOVERY_INITRC := device/samsung/totoro/recovery.rc
 JS_ENGINE := v8
 HTTP := chrome
 WITH_JIT := true
-TARGET_WEBKIT_USE_MORE_MEMORY := true
 ENABLE_JSC_JIT := true
 
 
@@ -113,20 +109,20 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/lm-2/gadget/lun0/file"
 
 
-# Wifi
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-WPA_SUPPLICANT_VERSION := VER_0_6_X
-BOARD_WLAN_DEVICE                := bcmdhd
-BOARD_WLAN_DEVICE_REV            := bcm4330_b1
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
-WIFI_DRIVER_FW_STA_PATH := "/system/etc/wifi/bcm4330_sta.bin"
-WIFI_DRIVER_FW_AP_PATH := "/system/etc/wifi/bcm4330_aps.bin"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wifi/bcm4330_sta.bin nvram_path=/system/etc/wifi/nvram.txt dhd_watchdog_ms=10 dhd_poll=1"
-WIFI_DRIVER_MODULE_NAME := "dhd"
+# Wifi related defines
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/dhd.ko"
+WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcm4330_b2.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcm4330_apsta_b2.bin"
+WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/firmware/fw_bcm4330_p2p_b2.bin"
+WIFI_DRIVER_MODULE_NAME          := "dhd.ko"
+WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/firmware/fw_bcm4330_b2.bin nvram_path=/proc/calibration iface_name=eth0"
 
 # Bluetooth
-#BOARD_HAVE_BLUETOOTH := true
-#BOARD_HAVE_BLUETOOTH_BCM := true
-#BOARD_FORCE_STATIC_A2DP := true
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BT_ALT_STACK := true
+BRCM_BT_USE_BTL_IF := true
+BRCM_BTL_INCLUDE_A2DP := true
+
 
 

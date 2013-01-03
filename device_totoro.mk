@@ -48,10 +48,11 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/totoro/overlay
 
 # Other
 PRODUCT_PACKAGES += \
+    gralloc.totoro \
+    FileManager \
     setup_fs \
     SoundRecoder \
-    VoiceDialer  \
-    FileManager  
+    VoiceDialer 
 
 
 # Video decoding
@@ -62,9 +63,11 @@ PRODUCT_PACKAGES += \
     libOmxCore
 
 # LDPI assets
-PRODUCT_LOCALES += en
 PRODUCT_AAPT_CONFIG := normal mdpi ldpi
 PRODUCT_AAPT_PREF_CONFIG := ldpi
+
+PRODUCT_LOCALES := \
+	en_GB \
   
 
 # These are the hardware-specific features
@@ -100,6 +103,8 @@ PRODUCT_COPY_FILES += \
 
 #audio
 PRODUCT_COPY_FILES += \
+vendor/samsung/totoro/proprietary/system/etc/asound.conf:system/etc/asound.conf \
+vendor/samsung/totoro/proprietary/system/lib/libasound.so:system/lib/libasound.so \
 #vendor/samsung/totoro/proprietary/system/lib/liblvvefs.so:system/lib/liblvvefs.so \
 #vendor/samsung/totoro/proprietary/system/lib/lib_Samsung_Resampler.so:system/lib/lib_Samsung_Resampler.so \
 #vendor/samsung/totoro/proprietary/system/lib/libsamsungSoundbooster.so:system/lib/libsamsungSoundbooster.so \
@@ -119,9 +124,7 @@ PRODUCT_COPY_FILES += \
 #vendor/samsung/totoro/proprietary/system/lib/libRS.so:system/lib/libRS.so \
 #vendor/samsung/totoro/proprietary/system/lib/liblzo.so:system/lib/liblzo.so \
 
-# apns config file
-PRODUCT_COPY_FILES += \
-        vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
+
 
 #mediaplayer
 PRODUCT_COPY_FILES += \
@@ -162,9 +165,8 @@ vendor/samsung/totoro/proprietary/system/bin/vold:system/bin/vold \
 #camera
 PRODUCT_COPY_FILES += \
 vendor/samsung/totoro/proprietary/system/lib/libcamera.so:system/lib/libcamera.so \
+vendor/samsung/totoro/proprietary/system/lib/libbrcmjpeg.so:system/lib/libbrcmjpeg.so \
 #vendor/samsung/totoro/proprietary/system/lib/libarccamera.so:system/lib/libarccamera.so \
-#vendor/samsung/totoro/proprietary/system/lib/libbrcmjpeg.so:system/lib/libbrcmjpeg.so \
-
 #vendor/samsung/totoro/proprietary/system/lib/libCaMotion.so:system/lib/libCaMotion.so \
 #vendor/samsung/totoro/proprietary/system/lib/libPanoraMax1.so:system/lib/libPanoraMax1.so \
 #vendor/samsung/totoro/proprietary/system/lib/libseccamera.so:system/lib/libseccamera.so \
@@ -211,6 +213,7 @@ PRODUCT_COPY_FILES += \
 
 #bluetooth
 PRODUCT_COPY_FILES += \
+vendor/samsung/totoro/proprietary/system/bin/btld:system/bin/btld \
 vendor/samsung/totoro/proprietary/system/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
 #vendor/samsung/totoro/proprietary/system/lib/libbluedroid.so:system/lib/libbluedroid.so \
 #vendor/samsung/totoro/proprietary/system/lib/libbluetooth.so:system/lib/libbluetooth.so \
@@ -230,7 +233,7 @@ vendor/samsung/totoro/proprietary/system/etc/bluetooth/audio.conf:system/etc/blu
 
 #gps
 PRODUCT_COPY_FILES += \
-#vendor/samsung/totoro/proprietary/system/lib/libsoc.so:system/lib/libsoc.so \
+vendor/samsung/totoro/proprietary/system/lib/libsoc.so:system/lib/libsoc.so \
 #vendor/samsung/totoro/proprietary/system/etc/gps/glconfig.xml:system/etc/gps/glconfig.xml \
 #vendor/samsung/totoro/proprietary/system/etc/gps/glconfig2075.xml:system/etc/gps/glconfig2075.xml \
 #vendor/samsung/totoro/proprietary/system/etc/gps/glconfig4751.xml:system/etc/gps/glconfig4751.xml \
@@ -257,13 +260,11 @@ device/samsung/totoro/prebuilt/bin/get_macaddrs:/system/bin/get_macaddrs \
 
 #rild
 PRODUCT_COPY_FILES += \
-vendor/samsung/totoro/proprietary/system/lib/libril.so:obj/lib/libril.so \
 vendor/samsung/totoro/proprietary/system/lib/libril.so:system/lib/libril.so \
+vendor/samsung/totoro/proprietary/system/bin/rild:system/bin/rild \
 vendor/samsung/totoro/proprietary/system/lib/libbrcm_ril.so:system/lib/libbrcm_ril.so \
 vendor/samsung/totoro/proprietary/system/lib/liburilclient.so:system/lib/liburilclient.so \
 vendor/samsung/totoro/proprietary/system/lib/libbrcm_ril.so:system/lib/libreference-ril.so \
-#vendor/samsung/totoro/proprietary/system/bin/rild:system/bin/rild \
-
 
 #outros
 PRODUCT_COPY_FILES += \
@@ -281,6 +282,12 @@ vendor/samsung/totoro/proprietary/system/lib/modules/brcm_switch.ko:system/lib/m
 #vendor/samsung/totoro/proprietary/system/lib/modules/dhd.ko:system/lib/modules/bcm4330.ko \
 
 
+# RIL properties
+PRODUCT_PROPERTY_OVERRIDES += \
+rild.libargs=-d/dev/smd0 \
+rild.libpath=/system/lib/libbrcm_ril.so \
+ro.telephony.ril_class=samsung \
+ro.telephony.sends_barcount=1
 
 # Performance & graphics properties
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -342,7 +349,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.hsxpa=1 \
     ro.ril.gprsclass=10 \
     ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock \
-    mobiledata.interfaces=pdp0,rmnet0,rmnet1,rmnet2 \
     debug.gr.swapinterval=0 \
     persist.sys.usb.config=mass_storage,adb \
     sys.usb.config=mass_storage,adb \
