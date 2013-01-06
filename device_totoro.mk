@@ -98,10 +98,7 @@ PRODUCT_COPY_FILES += \
     device/samsung/totoro/prebuilt/rfs_glue.ko:root/rfs_glue.ko \
     device/samsung/totoro/prebuilt/j4fs.ko:root/j4fs.ko \
     device/samsung/totoro/prebuilt/sec_param.ko:root/sec_param.ko \
-# Board-specific init
-PRODUCT_COPY_FILES += \
-    device/samsung/totoro/ueventd.gt-s5360.rc:root/ueventd.gt-s5360.rc \
-    device/samsung/totoro/init.gt-s5360.rc:root/init.gt-s5360.rc
+
 
 
 #extra-apps
