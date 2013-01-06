@@ -69,11 +69,6 @@ PRODUCT_PACKAGES += \
 # Add LDPI assets, in addition to MDPI
   PRODUCT_LOCALES += ldpi mdpi
 
-# Extra overlay for LDPI
-  PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/ldpi
-
-  
-
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
