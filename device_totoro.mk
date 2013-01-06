@@ -244,14 +244,6 @@ PRODUCT_COPY_FILES += \
 #vendor/samsung/totoro/proprietary/system/lib/libbluedroid.so:system/lib/libbluedroid.so \
 #vendor/samsung/totoro/proprietary/system/lib/libbluetooth.so:system/lib/libbluetooth.so \
 #vendor/samsung/totoro/proprietary/system/lib/libbluetoothd.so:system/lib/libbluetoothd.so \
-#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_calendar.jpg:system/usr/bluetooth/print/icon_calendar.jpg \
-#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_contact.jpg:system/usr/bluetooth/print/icon_contact.jpg \
-#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_email.jpg:system/usr/bluetooth/print/icon_email.jpg \
-#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_man.jpg:system/usr/bluetooth/print/icon_man.jpg \
-#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_mms.jpg:system/usr/bluetooth/print/icon_mms.jpg \
-#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/icon_sms.jpg:system/usr/bluetooth/print/icon_sms.jpg \
-#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/logo.jpg:system/usr/bluetooth/print/logo.jpg \
-#vendor/samsung/totoro/proprietary/system/usr/bluetooth/print/title.jpg:system/usr/bluetooth/print/title.jpg \
 #vendor/samsung/totoro/proprietary/system/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
 #vendor/samsung/totoro/proprietary/system/etc/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
 #vendor/samsung/totoro/proprietary/system/etc/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
@@ -270,12 +262,13 @@ vendor/samsung/totoro/proprietary/system/etc/gps.conf:system/etc/gps.conf \
 
 #misc
 PRODUCT_COPY_FILES += \
-device/samsung/totoro/prebuilt/bin/btld:system/bin/btld \
-device/samsung/totoro/prebuilt/bin/wlandutservice:system/bin/wlandutservice \
-device/samsung/totoro/prebuilt/bin/mfgloader:system/bin/mfgloader \
-device/samsung/totoro/prebuilt/bin/runSysCmd:system/bin/runSysCmd \
-device/samsung/totoro/prebuilt/bin/usb_portd:system/bin/usb_portd \
-device/samsung/totoro/prebuilt/bin/memsicd:system/bin/memsicd 
+vendor/samsung/totoro/proprietary/system/bin/btld:system/bin/btld \
+vendor/samsung/totoro/proprietary/system/bin/wlandutservice:system/bin/wlandutservice \
+vendor/samsung/totoro/proprietary/system/bin/mfgloader:system/bin/mfgloader \
+vendor/samsung/totoro/proprietary/system/bin/runSysCmd:system/bin/runSysCmd \
+vendor/samsung/totoro/proprietary/system/bin/usb_portd:system/bin/usb_portd \
+vendor/samsung/totoro/proprietary/system/bin/npsmobex:system/bin/npsmobex \
+vendor/samsung/totoro/proprietary/system/bin/memsicd:system/bin/memsicd 
 
 #Wifi
 PRODUCT_COPY_FILES += \
