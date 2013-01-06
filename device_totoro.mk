@@ -308,6 +308,15 @@ vendor/samsung/totoro/proprietary/system/lib/modules/gememalloc.ko:system/lib/mo
 vendor/samsung/totoro/proprietary/system/lib/modules/h6270enc.ko:system/lib/modules/h6270enc.ko \
 vendor/samsung/totoro/proprietary/system/lib/modules/hx170dec.ko:system/lib/modules/hx170dec.ko 
 
+#extra-apps
+PRODUCT_COPY_FILES += \
+device/samsung/totoro/prebuilt/app/meridian.apk::system/app/meridian.apk \
+device/samsung/totoro/prebuilt/app/quick.apk::system/app/quick.apk \
+device/samsung/totoro/prebuilt/lib/libqpicjni99.so::system/lib/libqpicjni99.so \
+device/samsung/totoro/prebuilt/lib/libandless.so::system/lib/libandless.so \
+device/samsung/totoro/prebuilt/lib/libatrack9.so::system/lib/libatrack9.so \
+device/samsung/totoro/prebuilt/lib/libatrack8.so::system/lib/libatrack8.so \
+
 
 
 # enable Google-specific location features,
