@@ -56,7 +56,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     broadcom \
     libOmxCore \
-    gralloc.totoro \
     SamsungServiceMode \
     libcopybit \
     toggleshutter \
@@ -299,6 +298,10 @@ vendor/samsung/totoro/proprietary/system/bin/BCM4330B1_002.001.003.0485.0506.hcd
 #vendor/samsung/totoro/proprietary/system/lib/libandroidterm2.so:system/lib/libandroidterm2.so \
 #vendor/samsung/totoro/proprietary/system/lib/libterm.so:system/lib/libterm.so \
 
+# HW drivers
+PRODUCT_COPY_FILES += \
+device/samsung/totoro/prebuilt/hw/gralloc.totoro.so:system/lib/hw/gralloc.totoro.so \
+device/samsung/totoro/prebuilt/lib/egl/libGLES_hgl.so:system/lib/egl/libGLES_hgl.so 
 #Drivers
 PRODUCT_COPY_FILES += \
 vendor/samsung/totoro/proprietary/system/lib/modules/bcm_headsetsw.ko:system/lib/modules/bcm_headsetsw.ko \
@@ -310,12 +313,12 @@ vendor/samsung/totoro/proprietary/system/lib/modules/hx170dec.ko:system/lib/modu
 
 #extra-apps
 PRODUCT_COPY_FILES += \
-device/samsung/totoro/prebuilt/app/meridian.apk::system/app/meridian.apk \
-device/samsung/totoro/prebuilt/app/quick.apk::system/app/quick.apk \
-device/samsung/totoro/prebuilt/lib/libqpicjni99.so::system/lib/libqpicjni99.so \
-device/samsung/totoro/prebuilt/lib/libandless.so::system/lib/libandless.so \
-device/samsung/totoro/prebuilt/lib/libatrack9.so::system/lib/libatrack9.so \
-device/samsung/totoro/prebuilt/lib/libatrack8.so::system/lib/libatrack8.so \
+device/samsung/totoro/prebuilt/app/meridian.apk:system/app/meridian.apk \
+device/samsung/totoro/prebuilt/app/quick.apk:system/app/quick.apk \
+device/samsung/totoro/prebuilt/lib/libqpicjni99.so:system/lib/libqpicjni99.so \
+device/samsung/totoro/prebuilt/lib/libandless.so:system/lib/libandless.so \
+device/samsung/totoro/prebuilt/lib/libatrack9.so:system/lib/libatrack9.so \
+device/samsung/totoro/prebuilt/lib/libatrack8.so:system/lib/libatrack8.so 
 
 
 
