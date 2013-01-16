@@ -13,16 +13,6 @@
 # limitations under the License.
 
 
-# This file is the device-specific product definition file for
-# crespo. It lists all the overlays, files, modules and properties
-# that are specific to this hardware: i.e. those are device-specific
-# drivers, configuration files, settings, etc...
-
-
-# These is the hardware-specific overlay, which points to the location
-# of hardware-specific resource overrides, typically the frameworks and
-# application settings that are stored in resourced.
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, build/target/product/languages_full.mk)
 $(call inherit-product, build/target/product/full_base.mk)
