@@ -31,7 +31,6 @@ PRODUCT_PACKAGES += \
 
 # update utilities
 PRODUCT_PACKAGES += \
-    broadcom \
     libOmxCore \
     SamsungServiceMode \
     libcopybit \
@@ -64,7 +63,7 @@ PRODUCT_COPY_FILES += \
     device/samsung/totoro/prebuilt/rfs_fat.ko:root/rfs_fat.ko \
     device/samsung/totoro/prebuilt/rfs_glue.ko:root/rfs_glue.ko \
     device/samsung/totoro/prebuilt/j4fs.ko:root/j4fs.ko \
-    device/samsung/totoro/prebuilt/sec_param.ko:root/sec_param.ko \
+    device/samsung/totoro/prebuilt/sec_param.ko:root/sec_param.ko 
 # Board-specific init
 PRODUCT_COPY_FILES += \
     device/samsung/totoro/ueventd.gt-s5360.rc:root/ueventd.gt-s5360.rc \
@@ -112,7 +111,7 @@ vendor/samsung/totoro/proprietary/system/lib/lib_R2VS_ARM_GA_Library_for_EUROPA.
 vendor/samsung/totoro/proprietary/system/lib/libmedia.so:system/lib/libmedia.so \
 vendor/samsung/totoro/proprietary/system/lib/libaudioflinger.so:system/lib/libaudioflinger.so \
 vendor/samsung/totoro/proprietary/system/lib/liba2dp.so:system/lib/liba2dp.so \
-#vendor/samsung/totoro/proprietary/system/bin/mediaserver:system/bin/mediaserver \
+vendor/samsung/totoro/proprietary/system/bin/mediaserver:system/bin/mediaserver \
 #vendor/samsung/totoro/proprietary/system/lib/libsisodrm.so:system/lib/libsisodrm.so \
 #vendor/samsung/totoro/proprietary/system/lib/libomadrm.so:system/lib/libomadrm.so \
 #vendor/samsung/totoro/proprietary/system/lib/librs_jni.so:system/lib/librs_jni.so \
@@ -233,6 +232,7 @@ vendor/samsung/totoro/proprietary/system/bin/memsicd:system/bin/memsicd
 
 #Wifi
 PRODUCT_COPY_FILES += \
+device/samsung/totoro/prebuilt/lib/modules/dhd.ko:system/lib/modules/dhd.ko \
 vendor/samsung/totoro/proprietary/system/lib/libnetutils.so:system/lib/libnetutils.so \
 device/samsung/totoro/prebuilt/etc/dhcpcd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
 device/samsung/totoro/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
@@ -252,7 +252,7 @@ vendor/samsung/totoro/proprietary/system/lib/libril.so:system/lib/libril.so \
 vendor/samsung/totoro/proprietary/system/bin/rild:system/bin/rild \
 vendor/samsung/totoro/proprietary/system/lib/libbrcm_ril.so:system/lib/libbrcm_ril.so \
 vendor/samsung/totoro/proprietary/system/lib/liburilclient.so:system/lib/liburilclient.so \
-vendor/samsung/totoro/proprietary/system/lib/libbrcm_ril.so:system/lib/libreference-ril.so \
+vendor/samsung/totoro/proprietary/system/lib/libbrcm_ril.so:system/lib/libreference-ril.so 
 
 #outros
 PRODUCT_COPY_FILES += \
@@ -268,7 +268,6 @@ device/samsung/totoro/prebuilt/lib/egl/libGLES_hgl.so:system/lib/egl/libGLES_hgl
 PRODUCT_COPY_FILES += \
 vendor/samsung/totoro/proprietary/system/lib/modules/bcm_headsetsw.ko:system/lib/modules/bcm_headsetsw.ko \
 vendor/samsung/totoro/proprietary/system/lib/modules/brcm_switch.ko:system/lib/modules/brcm_switch.ko \
-vendor/samsung/totoro/proprietary/system/lib/modules/dhd.ko:system/lib/modules/dhd.ko \
 vendor/samsung/totoro/proprietary/system/lib/modules/gememalloc.ko:system/lib/modules/gememalloc.ko \
 vendor/samsung/totoro/proprietary/system/lib/modules/h6270enc.ko:system/lib/modules/h6270enc.ko \
 vendor/samsung/totoro/proprietary/system/lib/modules/hx170dec.ko:system/lib/modules/hx170dec.ko 

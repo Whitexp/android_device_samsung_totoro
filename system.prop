@@ -20,7 +20,7 @@ wifi.interface=eth0
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
 #dalvik.vm.dexopt-data-only=1
 dalvik.vm.dexopt-flags=m=y
-dalvik.vm.heapsize=24m
+dalvik.vm.heapsize=32m
 dalvik.vm.checkjni=false
 dalvik.vm.dexopt-flags=m=y
 dalvik.vm.execution-mode=int:jit
