@@ -37,6 +37,7 @@ BOARD_HAS_SAMSUNG_VOLUME_BUG := true
 -include vendor/samsung/totoro/BoardConfigVendor.mk
 
 TARGET_BOARD_PLATFORM := bcm21553
+TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv6-vfp
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
