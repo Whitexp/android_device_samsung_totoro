@@ -212,7 +212,6 @@ PRODUCT_COPY_FILES += \
 
 #bluetooth
 PRODUCT_COPY_FILES += \
-vendor/samsung/totoro/proprietary/system/bin/btld:system/bin/btld \
 vendor/samsung/totoro/proprietary/system/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
 #vendor/samsung/totoro/proprietary/system/lib/libbluedroid.so:system/lib/libbluedroid.so \
 #vendor/samsung/totoro/proprietary/system/lib/libbluetooth.so:system/lib/libbluetooth.so \
