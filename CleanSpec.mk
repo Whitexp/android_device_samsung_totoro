@@ -43,18 +43,7 @@
 #$(call add-clean-step, rm -rf $(OUT_DIR)/target/common/obj/JAVA_LIBRARIES/core_intermediates)
 #$(call add-clean-step, find $(OUT_DIR) -type f -name "IGTalkSession*" -print0 | xargs -0 rm -f)
 #$(call add-clean-step, rm -rf $(PRODUCT_OUT)/data/*)
-$(call add-clean-step, find $(PRODUCT_OUT) -name "*.apk" | xargs rm)
 
 # ************************************************
 # NEWER CLEAN STEPS MUST BE AT THE END OF THE LIST
 # ************************************************
-$(call add-clean-step, rm -rf $(TARGET_OUT)/build.prop)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/totoro/obj/SHARED_LIBRARIES/libaudio_intermediates)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/totoro/obj/SHARED_LIBRARIES/libaudio_intermediates)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/totoro/obj/STATIC_LIBRARIES/libasound_intermediates)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/totoro/obj/EXECUTABLES/alsa_*)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/totoro/system/bin/alsa_*)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/totoro/system/etc/asound.conf)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/totoro/system/usr/share/alsa)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/totoro/obj/PACKAGING/systemimage_intermediates)
-$(call add-clean-step, rm -rf $(OUT_DIR)/target/product/totoro/obj/SHARED_LIBRARIES/libaudio_intermediates)

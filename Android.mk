@@ -14,7 +14,12 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),totoro)
+ifeq ($(TARGET_DEVICE),totoro)
+
+ifneq ($(TARGET_SIMULATOR),true)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 endif
+
+endif
+
 

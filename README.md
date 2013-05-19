@@ -1,19 +1,3 @@
-Device-Galaxy-Y
-===============
+White Cyanogenmod Project 
 
-Device configuration for Samsung galaxyy GT-S5360
-
-
-Developer : Whitexp Luis Gustavo de Souza Couto
-
-
-How to build :
-
-Download cyanogenmod source,use this command :
-
-     repo init -u git://github.com/CyanogenMod/android.git -b gingerbread
-
-Then to sync up:
-
-    repo sync
-
+Here galaxy y (s5360) device folder for build Cyanogenmod 9, Android 4.0.4
